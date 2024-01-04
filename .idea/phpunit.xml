@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PHPUnit">
+    <option name="directories">
+      <list>
+        <option value="$PROJECT_DIR$/orders-microservice/tests" />
+        <option value="$PROJECT_DIR$/catalog-microservice/tests" />
+        <option value="$PROJECT_DIR$/frontend-microservice/tests" />
+        <option value="$PROJECT_DIR$/BookStore/catalog-microservice/tests" />
+        <option value="$PROJECT_DIR$/BookStore/frontend-microservice/tests" />
+        <option value="$PROJECT_DIR$/BookStore/orders-microservice/tests" />
+      </list>
+    </option>
+  </component>
+</project>

@@ -1,0 +1,60 @@
+version: '3'
+
+services:
+  frontend:
+    build:
+      context: ./frontend-microservice
+    ports:
+      - "8080:8080"
+    networks:
+      - app-network
+
+  catalog:
+        build:
+          context: ./catalog-microservice
+        ports:
+          - "8000:8000"
+        networks:
+          - app-network
+  catalog-replica-1:
+        build:
+         context: ./catalog-rep1
+        ports:
+          - "8010:8010"
+        networks:
+        - app-network
+
+  catalog-replica-2:
+        build:
+          context: ./catalog-rep2
+        ports:
+          - "8020:8020"
+        networks:
+          - app-network
+
+  orders:
+        build:
+          context: ./orders-microservice
+        ports:
+          - "8001:8001"
+        networks:
+          - app-network
+  orders-replica-1:
+    build:
+      context: ./orders-rep1
+    ports:
+      - "8002:8002"
+    networks:
+      - app-network
+
+  orders-replica-2:
+      build:
+        context: ./orders-rep2
+      ports:
+        - "8003:8003"
+      networks:
+        - app-network
+
+networks:
+      app-network:
+        driver: bridge
