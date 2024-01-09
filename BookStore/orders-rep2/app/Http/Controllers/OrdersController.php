@@ -4,13 +4,32 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use App\LoadBalancersOrderRep2\RoundRobinLoadBalancer;
+
 
 class OrdersController extends Controller
 {
+
+    private $catalogLoadBalancer;
+    private $ordersLoadBalancer;
+
+    public function __construct()
+    {
+        $con = [
+            'catalogServers' => ['http://192.168.1.71:8000', 'http://192.168.1.71:8010', 'http://192.168.1.71:8020'],
+            'ordersServers' => ['http://192.168.1.71:8001', 'http://192.168.1.71:8002', 'http://192.168.1.71:8003'],
+        ];
+
+        $this->catalogLoadBalancer = new RoundRobinLoadBalancer($con['catalogServers']);
+        $this->ordersLoadBalancer = new RoundRobinLoadBalancer($con['ordersServers']);
+    }
     public function purchase($id)
     {
+        global $catalogLoadBalancer;
+        $catalogServer = $catalogLoadBalancer->getNextServer();
+
         // Validate and process the purchase
-        $purchaseResult = $this->processPurchase($id);
+        $purchaseResult = $this->processPurchase($id, $catalogServer);
 
         if ($purchaseResult['success']) {
             return response()->json(['message' => 'Purchase successful! You bought a book with this id: ' . $id]);
@@ -19,10 +38,10 @@ class OrdersController extends Controller
         }
     }
 
-    private function processPurchase($id)
+    private function processPurchase($id, $catalogServer)
     {
         // Query the catalog microservice to check item availability
-        $catalogResponse = Http::get('http://192.168.1.71:8000/catalog/' . $id);
+        $catalogResponse = Http::get("$catalogServer/catalog/$id");
 
         if ($catalogResponse->successful()) {
             $catalogData = $catalogResponse->json();
@@ -32,7 +51,7 @@ class OrdersController extends Controller
             if ($quantity > 0) {
                 // Perform the purchase
                 // decrement the in-stock count in the catalog microservice
-                $this->updateCatalog($id, $quantity - 1);
+                $this->updateCatalog($id, $quantity - 1, $catalogServer);
 
                 return ['success' => true];
             } else {
@@ -43,10 +62,10 @@ class OrdersController extends Controller
         }
     }
 
-    private function updateCatalog($id, $quantity)
+    private function updateCatalog($id, $quantity, $catalogServer)
     {
         // Update the catalog microservice with the new quantity
-        $updateResponse = Http::put('http://192.168.1.71:8000/catalog/' . $id, [
+        $updateResponse = Http::put("$catalogServer/catalog/$id", [
             'quantity' => $quantity,
         ]);
 

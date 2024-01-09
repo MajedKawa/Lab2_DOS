@@ -17,7 +17,6 @@
       <sourceFolder url="file://$MODULE_DIR$/orders-microservice/database/seeders" isTestSource="false" packagePrefix="Database\Seeders\" />
       <sourceFolder url="file://$MODULE_DIR$/orders-microservice/tests" isTestSource="true" packagePrefix="Tests\" />
       <sourceFolder url="file://$MODULE_DIR$/orders-microservice/tests" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/BookStore/catalog-microservice" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/BookStore/catalog-microservice/app" isTestSource="false" packagePrefix="App\" />
       <sourceFolder url="file://$MODULE_DIR$/BookStore/catalog-microservice/database/factories" isTestSource="false" packagePrefix="Database\Factories\" />
       <sourceFolder url="file://$MODULE_DIR$/BookStore/catalog-microservice/database/seeders" isTestSource="false" packagePrefix="Database\Seeders\" />
@@ -29,12 +28,13 @@
       <sourceFolder url="file://$MODULE_DIR$/BookStore/frontend-microservice/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/BookStore/frontend-microservice/tests" isTestSource="true" packagePrefix="Tests\" />
       <sourceFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/app" isTestSource="false" packagePrefix="App\" />
+      <sourceFolder url="file://$MODULE_DIR$/BookStore/app" isTestSource="false" packagePrefix="App\" />
       <sourceFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/database/factories" isTestSource="false" packagePrefix="Database\Factories\" />
+      <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/database/seeders" isTestSource="false" packagePrefix="Database\Seeders\" />
       <sourceFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/tests" isTestSource="true" packagePrefix="Tests\" />
-      <sourceFolder url="file://$MODULE_DIR$/BookStore/frontend-microservice" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/BookStore/orders-microservice" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/catalog-microservice/vendor/brick/math" />
       <excludeFolder url="file://$MODULE_DIR$/catalog-microservice/vendor/carbonphp/carbon-doctrine-types" />
       <excludeFolder url="file://$MODULE_DIR$/catalog-microservice/vendor/composer" />
@@ -600,6 +600,119 @@
       <excludeFolder url="file://$MODULE_DIR$/BookStore/vendor/psr/http-message" />
       <excludeFolder url="file://$MODULE_DIR$/BookStore/vendor/ralouphie/getallheaders" />
       <excludeFolder url="file://$MODULE_DIR$/BookStore/vendor/symfony/deprecation-contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/brick/math" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/doctrine/inflector" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/doctrine/lexer" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/dragonmantank/cron-expression" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/egulias/email-validator" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/fakerphp/faker" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/fruitcake/php-cors" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/graham-campbell/result-type" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/guzzlehttp/guzzle" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/guzzlehttp/promises" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/guzzlehttp/psr7" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/guzzlehttp/uri-template" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/hamcrest/hamcrest-php" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/illuminate/auth" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/illuminate/broadcasting" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/illuminate/bus" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/illuminate/cache" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/illuminate/collections" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/illuminate/conditionable" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/illuminate/config" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/illuminate/console" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/illuminate/container" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/illuminate/contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/illuminate/database" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/illuminate/encryption" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/illuminate/events" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/illuminate/filesystem" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/illuminate/hashing" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/illuminate/http" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/illuminate/log" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/illuminate/macroable" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/illuminate/pagination" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/illuminate/pipeline" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/illuminate/queue" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/illuminate/session" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/illuminate/support" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/illuminate/testing" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/illuminate/translation" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/illuminate/validation" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/illuminate/view" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/laravel/lumen-framework" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/laravel/prompts" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/laravel/serializable-closure" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/mockery/mockery" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/monolog/monolog" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/myclabs/deep-copy" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/nesbot/carbon" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/nikic/fast-route" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/nikic/php-parser" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/nunomaduro/termwind" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/phar-io/manifest" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/phar-io/version" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/phpoption/phpoption" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/phpunit/php-code-coverage" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/phpunit/php-file-iterator" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/phpunit/php-invoker" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/phpunit/php-text-template" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/phpunit/php-timer" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/phpunit/phpunit" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/psr/clock" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/psr/container" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/psr/event-dispatcher" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/psr/http-client" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/psr/http-factory" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/psr/http-message" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/psr/log" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/psr/simple-cache" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/ralouphie/getallheaders" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/ramsey/collection" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/ramsey/uuid" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/sebastian/cli-parser" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/sebastian/code-unit" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/sebastian/code-unit-reverse-lookup" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/sebastian/comparator" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/sebastian/complexity" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/sebastian/diff" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/sebastian/environment" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/sebastian/exporter" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/sebastian/global-state" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/sebastian/lines-of-code" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/sebastian/object-enumerator" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/sebastian/object-reflector" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/sebastian/recursion-context" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/sebastian/type" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/sebastian/version" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/symfony/console" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/symfony/deprecation-contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/symfony/error-handler" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/symfony/event-dispatcher" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/symfony/event-dispatcher-contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/symfony/finder" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/symfony/http-foundation" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/symfony/http-kernel" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/symfony/mime" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/symfony/polyfill-ctype" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/symfony/polyfill-intl-grapheme" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/symfony/polyfill-intl-idn" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/symfony/polyfill-intl-normalizer" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/symfony/polyfill-mbstring" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/symfony/polyfill-php72" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/symfony/polyfill-php80" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/symfony/polyfill-php83" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/symfony/process" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/symfony/service-contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/symfony/string" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/symfony/translation" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/symfony/translation-contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/symfony/var-dumper" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/theseer/tokenizer" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/vlucas/phpdotenv" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/voku/portable-ascii" />
+      <excludeFolder url="file://$MODULE_DIR$/BookStore/orders-microservice/vendor/webmozart/assert" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
