@@ -28,8 +28,8 @@ class FrontendController extends Controller
     public function search($topic)
     {
         // Check if the topic is in the cache
-        if (isset($this->cache[$topic])) {
-            return response()->json($this->cache[$topic], 200);
+        if (isset($this->cache['search'][$topic])) {
+            return response()->json($this->cache['search'][$topic], 200);
         }
         $startTimestamp = microtime(true); // Record the start time
 
@@ -44,7 +44,7 @@ class FrontendController extends Controller
                 $responseTime = $endTimestamp - $startTimestamp;
                 $data['log'] = "Search request took {$responseTime} seconds, the request was from $catalogServer";
                 // Store the data in the cache
-                $this->cache[$topic] = $data;
+                $this->cache['search'][$topic] = $data;
                 return response()->json($data, 200);
             } else {
                 throw new \Exception('Failed to retrieve data from catalog');
@@ -56,6 +56,10 @@ class FrontendController extends Controller
 
     public function info($id)
     {
+        // Check if the id is in the cache
+        if (isset($this->cache['info'][$id])) {
+            return response()->json($this->cache['info'][$id], 200);
+        }
         $startTimestamp = microtime(true); // Record the start time
 
         $catalogServer = $this->catalogLoadBalancer->getNextServer();
@@ -68,6 +72,8 @@ class FrontendController extends Controller
                 $endTimestamp = microtime(true); // Record the end time
                 $responseTime = $endTimestamp - $startTimestamp;
                 $data['log'] = "Info request took {$responseTime} seconds, the request was from $catalogServer";
+                // Store the data in the cache
+                $this->cache['info'][$id] = $data;
                 return response()->json($data, 200);
             } else {
                 throw new \Exception('Failed to retrieve item information from catalog');
@@ -87,6 +93,10 @@ class FrontendController extends Controller
             $response = Http::post("$ordersServer/orders/purchase/$id");
 
             if ($response->successful()) {
+                // Invalidate the cache for this id
+                if (isset($this->cache['info'][$id])) {
+                    unset($this->cache['info'][$id]);
+                }
                 $endTimestamp = microtime(true); // Record the end time
                 $responseTime = $endTimestamp - $startTimestamp;
                 return response()->json(['message' => 'Purchase successful! You bought the book with this id: ' . $id . " <br> Purchase request took $responseTime seconds, the request was from $ordersServer"], );
