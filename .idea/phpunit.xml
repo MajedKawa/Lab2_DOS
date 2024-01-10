@@ -6,9 +6,9 @@
         <option value="$PROJECT_DIR$/orders-microservice/tests" />
         <option value="$PROJECT_DIR$/catalog-microservice/tests" />
         <option value="$PROJECT_DIR$/frontend-microservice/tests" />
-        <option value="$PROJECT_DIR$/BookStore/catalog-microservice/tests" />
         <option value="$PROJECT_DIR$/BookStore/orders-microservice/tests" />
         <option value="$PROJECT_DIR$/BookStore/frontend-microservice/tests" />
+        <option value="$PROJECT_DIR$/BookStore/catalog-microservice/tests" />
       </list>
     </option>
   </component>

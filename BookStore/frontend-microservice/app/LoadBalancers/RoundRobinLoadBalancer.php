@@ -10,7 +10,8 @@ class RoundRobinLoadBalancer
     public function __construct(array $backendServers)
     {
         $this->backendServers = $backendServers;
-        $this->currentIndex = 0;
+        // Initialize currentIndex from the session, or to 0 if it's not set
+        $this->currentIndex = isset($_SESSION['currentIndex']) ? $_SESSION['currentIndex'] : 0;
     }
 
     public function getNextServer()
@@ -19,6 +20,7 @@ class RoundRobinLoadBalancer
 
         // Move to the next server in a round-robin fashion
         $this->currentIndex = ($this->currentIndex + 1) % count($this->backendServers);
+        $_SESSION['currentIndex'] = $this->currentIndex;     // Store the updated currentIndex in the session
 
         return $selectedServer;
     }

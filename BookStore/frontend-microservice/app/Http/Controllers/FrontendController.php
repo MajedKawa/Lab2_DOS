@@ -4,14 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Log;
 use App\LoadBalancers\RoundRobinLoadBalancer;
-
 
 class FrontendController extends Controller
 {
     private $catalogLoadBalancer;
     private $ordersLoadBalancer;
+
+    private $cache; // The in-memory cache
 
     public function __construct()
     {
@@ -22,10 +22,15 @@ class FrontendController extends Controller
 
         $this->catalogLoadBalancer = new RoundRobinLoadBalancer($con['catalogServers']);
         $this->ordersLoadBalancer = new RoundRobinLoadBalancer($con['ordersServers']);
+        $this->cache = []; // Initialize the cache
     }
 
     public function search($topic)
     {
+        // Check if the topic is in the cache
+        if (isset($this->cache[$topic])) {
+            return response()->json($this->cache[$topic], 200);
+        }
         $startTimestamp = microtime(true); // Record the start time
 
         $catalogServer = $this->catalogLoadBalancer->getNextServer();
@@ -35,23 +40,24 @@ class FrontendController extends Controller
 
             if ($response->successful()) {
                 $data = $response->json();
+                $endTimestamp = microtime(true); // Record the end time
+                $responseTime = $endTimestamp - $startTimestamp;
+                $data['log'] = "Search request took {$responseTime} seconds, the request was from $catalogServer";
+                // Store the data in the cache
+                $this->cache[$topic] = $data;
                 return response()->json($data, 200);
             } else {
                 throw new \Exception('Failed to retrieve data from catalog');
             }
         } catch (\Exception $e) {
-            Log::error("Error in search: " . $e->getMessage());
             return response()->json(['error' => $e->getMessage()], 500);
-        } finally {
-            $endTimestamp = microtime(true); // Record the end time
-            $responseTime = $endTimestamp - $startTimestamp;
-            // Log the response time
-            Log::info("Search request took {$responseTime} seconds, the request was from $catalogServer");
         }
     }
 
     public function info($id)
     {
+        $startTimestamp = microtime(true); // Record the start time
+
         $catalogServer = $this->catalogLoadBalancer->getNextServer();
 
         try {
@@ -59,30 +65,35 @@ class FrontendController extends Controller
 
             if ($response->successful()) {
                 $data = $response->json();
+                $endTimestamp = microtime(true); // Record the end time
+                $responseTime = $endTimestamp - $startTimestamp;
+                $data['log'] = "Info request took {$responseTime} seconds, the request was from $catalogServer";
                 return response()->json($data, 200);
             } else {
                 throw new \Exception('Failed to retrieve item information from catalog');
             }
         } catch (\Exception $e) {
-            Log::error("Error in info: " . $e->getMessage());
             return response()->json(['error' => $e->getMessage()], 500);
         }
     }
 
     public function purchase($id)
     {
+        $startTimestamp = microtime(true); // Record the start time
+
         $ordersServer = $this->ordersLoadBalancer->getNextServer();
 
         try {
             $response = Http::post("$ordersServer/orders/purchase/$id");
 
             if ($response->successful()) {
-                return response()->json(['message' => 'Purchase successful! You bought the book with this id: ' . $id]);
+                $endTimestamp = microtime(true); // Record the end time
+                $responseTime = $endTimestamp - $startTimestamp;
+                return response()->json(['message' => 'Purchase successful! You bought the book with this id: ' . $id . " <br> Purchase request took $responseTime seconds, the request was from $ordersServer"], );
             } else {
                 throw new \Exception('Failed to process purchase');
             }
         } catch (\Exception $e) {
-            Log::error("Error in purchase: " . $e->getMessage());
             return response()->json(['error' => $e->getMessage()], 500);
         }
     }
