@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\LoadBalancersOrder\RoundRobinLoadBalancer;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
 

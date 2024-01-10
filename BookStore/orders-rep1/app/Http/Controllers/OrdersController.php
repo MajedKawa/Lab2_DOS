@@ -2,11 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use App\LoadBalancersOrderRep1\RoundRobinLoadBalancer;
-
-
 
 
 class OrdersController extends Controller
